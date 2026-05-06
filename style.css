@@ -1,0 +1,178 @@
+:root {
+    --primary: #5B6CFF;
+    --primary-light: #7F8CFF;
+    --bg: #F5F6FA;
+    --accent-green: #A8E063;
+    --accent-yellow: #FFD166;
+    --accent-pink: #F78FB3;
+    --card-radius: 32px;
+    --font-display: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: #1a1a1a;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Layout Classes */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.habit-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+.habit-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* Color Themes */
+.bg-yellow { background-color: var(--accent-yellow); }
+.bg-green { background-color: var(--accent-green); }
+.bg-blue { background-color: var(--primary); color: white; }
+.bg-pink { background-color: var(--accent-pink); }
+
+/* Welcome Screen Animation */
+#welcome-screen {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    z-index: 1000;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Petal Animation */
+@keyframes rotate-petals {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.petals-container {
+    animation: rotate-petals 20s linear infinite;
+}
+
+/* Modal Transitions */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    transform: translateY(50px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+/* Custom Checkbox */
+.check-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Filter Buttons */
+.filter-btn.active {
+    background-color: #5B6CFF;
+    color: white;
+}
+
+/* Toast */
+#toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+/* Custom Range Input */
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-scrollbar {
+    display: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: #000;
+    cursor: pointer;
+    margin-top: -10px;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+}
+
+/* Ripple Effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+
+.ripple:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+}
