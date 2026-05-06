@@ -131,21 +131,37 @@ function switchView(viewId) {
     });
     document.getElementById(`view-${viewId}`).classList.remove('hidden');
 
-    // Update Sidebar Styling
+    // Update Sidebar Styling (Desktop)
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('bg-gray-50', 'text-[#5B6CFF]');
         link.classList.add('text-gray-400');
     });
+    
+    // Update Bottom Nav Styling (Mobile)
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.classList.remove('text-[#5B6CFF]');
+        link.classList.add('text-gray-400');
+    });
+
     const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(link => 
-        link.innerText.toLowerCase().includes(viewId)
+        link.innerText.toLowerCase().includes(viewId === 'dashboard' ? 'dashboard' : viewId)
     );
     if (activeLink) {
         activeLink.classList.remove('text-gray-400');
         activeLink.classList.add('bg-gray-50', 'text-[#5B6CFF]');
     }
 
+    const mobileActiveLink = Array.from(document.querySelectorAll('.mobile-nav-link')).find(link => 
+        link.innerText.toLowerCase().includes(viewId === 'dashboard' ? 'home' : (viewId === 'calendar' ? 'stats' : 'settings'))
+    );
+    if (mobileActiveLink) {
+        mobileActiveLink.classList.remove('text-gray-400');
+        mobileActiveLink.classList.add('text-[#5B6CFF]');
+    }
+
     if (viewId === 'calendar') renderCalendar();
     lucide.createIcons();
+    window.scrollTo(0,0);
 }
 
 function toggleModal(id, show, editId = null) {

@@ -96,6 +96,22 @@
     <!-- Main Dashboard -->
     <div id="dashboard" class="flex min-h-screen opacity-0 transition-opacity duration-1000">
         
+        <!-- Bottom Nav (Mobile Only) -->
+        <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex justify-around p-4 z-[1000]">
+            <button onclick="switchView('dashboard')" class="mobile-nav-link flex flex-col items-center space-y-1 text-[#5B6CFF]">
+                <i data-lucide="layout-grid" class="w-6 h-6"></i>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+            </button>
+            <button onclick="switchView('calendar')" class="mobile-nav-link flex flex-col items-center space-y-1 text-gray-400">
+                <i data-lucide="calendar" class="w-6 h-6"></i>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Stats</span>
+            </button>
+            <button onclick="switchView('settings')" class="mobile-nav-link flex flex-col items-center space-y-1 text-gray-400">
+                <i data-lucide="settings" class="w-6 h-6"></i>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Settings</span>
+            </button>
+        </div>
+
         <!-- Sidebar -->
         <aside class="hidden lg:flex w-80 flex-col bg-white border-r border-gray-100 p-10 fixed h-full">
             <div class="flex items-center space-x-4 mb-16">
